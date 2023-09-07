@@ -15,10 +15,10 @@ export const Accordion = () => {
 
   const handleToggle = (index: number) => setActive(index);
 
-  const handleMint = (colour:string) => {
-    handleMinting(colour);
-    handleMinted(colour);
-  }
+  // const handleMint = (colour:string) => {
+  //   handleMinting(colour);
+  //   handleMinted(colour);
+  // }
 
   const handleMinting = (colour: string) => {
 
@@ -39,24 +39,24 @@ export const Accordion = () => {
     }
   }
 
-  const handleMinted = (colour: string) => {
+  // const handleMinted = (colour: string) => {
 
-    if (colour == "Violet") {
-      setVioletMinting(false);
-    } else if (colour == "Indigo") {
-      setIndigoMinting(false)
-    } else if (colour == "Blue") {
-      setBlueMinting(false);
-    } else if (colour == "Green") {
-      setGreenMinting(false);
-    } else if (colour == "Yellow") {
-      setYellowMinting(false);
-    } else if (colour == "Orange") {
-      setOrangeMinting(false);
-    } else {
-      setRedMinting(false);
-    }
-  }
+  //   if (colour == "Violet") {
+  //     setVioletMinting(false);
+  //   } else if (colour == "Indigo") {
+  //     setIndigoMinting(false)
+  //   } else if (colour == "Blue") {
+  //     setBlueMinting(false);
+  //   } else if (colour == "Green") {
+  //     setGreenMinting(false);
+  //   } else if (colour == "Yellow") {
+  //     setYellowMinting(false);
+  //   } else if (colour == "Orange") {
+  //     setOrangeMinting(false);
+  //   } else {
+  //     setRedMinting(false);
+  //   }
+  // }
 
   return (
     <section>
