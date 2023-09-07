@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  height: 100vh;
+  color: #3e3f5d;
+  font-family: "Euclid Circular A", "Poppins";
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://t4.ftcdn.net/jpg/01/19/63/63/360_F_119636327_iE86CLPTeiscjkaMNICtluosK3w0k3VJ.jpg");
+}
