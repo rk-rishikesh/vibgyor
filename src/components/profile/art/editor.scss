@@ -1,0 +1,48 @@
+$black: #222831;
+$grey: #30475e;
+$white: #e8e8e8;
+$red: #f05454;
+
+#editor {
+  // border: 1px solid $red;
+  // border-radius: 0.25rem;
+  padding: 2rem 0rem 4rem 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  #options {
+    display: flex;
+    margin-bottom: 3rem;
+    justify-content: center;
+
+    .option {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  #drawingPanel{
+    margin-top: 20%;
+    margin-left: 20%;
+  }
+  
+}
+
+// .startbutton {
+//     font-size: 1rem;
+//     padding: 1rem 3rem;
+//     border-radius: 0.25rem;
+//     text-transform: uppercase;
+//     border: 1px solid transparent;
+//     transition: background-color 0.2s ease-in-out;
+//     margin-left: 50%;
+//   }

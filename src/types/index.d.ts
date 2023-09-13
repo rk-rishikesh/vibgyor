@@ -13,6 +13,7 @@ export type IAccordionItem = {
 export type ICards = {
   header: string;
   image: string;
+  premintText:string;
   minting: string;
   text: string;
 };

@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import { cards } from "../../data";
 import "./styles.css";
 
 export const Accordion = () => {
+  
   const [active, setActive] = useState(0);
 
   const [violetMinting, setVioletMinting] = useState(false);
@@ -67,13 +69,10 @@ export const Accordion = () => {
       >
         {violetMinting && cards[0].header == "Violet" ? <img src={cards[0].minting} /> : <img src={cards[0].image} />}
 
-
         <div className="content">
-          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[0].header)}>circles</span>
+          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[0].header)}>bolt</span>
           <div>
-            <h2>{cards[0].header}</h2>
-            <p>{cards[0].text}</p>
-            <p>20 PTS</p>
+            <h2>Mint {cards[0].header}</h2>
           </div>
         </div>
       </article>
@@ -88,10 +87,10 @@ export const Accordion = () => {
         {indigoMinting && cards[1].header == "Indigo" ? <img src={cards[1].minting} /> : <img src={cards[1].image} />}
 
         <div className="content">
-          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[1].header)}>circles</span>
+          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[1].header)}>bolt</span>
           <div>
-            <h2>{cards[1].header}</h2>
-            <p>{cards[1].text}</p>
+            <h2>Mint {cards[1].header}</h2>
+           
           </div>
         </div>
       </article>
@@ -106,10 +105,10 @@ export const Accordion = () => {
         {blueMinting && cards[2].header == "Blue" ? <img src={cards[2].minting} /> : <img src={cards[2].image} />}
 
         <div className="content">
-          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[2].header)}>circles</span>
+          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[2].header)}>bolt</span>
           <div>
-            <h2>{cards[2].header}</h2>
-            <p>{cards[2].text}</p>
+            <h2>Mint {cards[2].header}</h2>
+          
           </div>
         </div>
       </article>
@@ -124,10 +123,10 @@ export const Accordion = () => {
         {greenMinting && cards[3].header == "Green" ? <img src={cards[3].minting} /> : <img src={cards[3].image} />}
 
         <div className="content">
-          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[3].header)}>circles</span>
+          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[3].header)}>bolt</span>
           <div>
-            <h2>{cards[3].header}</h2>
-            <p>{cards[3].text}</p>
+            <h2>Mint {cards[3].header}</h2>
+           
           </div>
         </div>
       </article>
@@ -142,10 +141,10 @@ export const Accordion = () => {
         {yellowMinting && cards[4].header == "Yellow" ? <img src={cards[4].minting} /> : <img src={cards[4].image} />}
 
         <div className="content">
-          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[4].header)}>circles</span>
+          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[4].header)}>bolt</span>
           <div>
-            <h2>{cards[4].header}</h2>
-            <p>{cards[4].text}</p>
+            <h2>Mint {cards[4].header}</h2>
+            
           </div>
         </div>
       </article>
@@ -158,12 +157,11 @@ export const Accordion = () => {
       >
 
         {orangeMinting && cards[5].header == "Orange" ? <img src={cards[5].minting} /> : <img src={cards[5].image} />}
-
         <div className="content">
-          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[5].header)}>circles</span>
+          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[5].header)}>bolt</span>
           <div>
-            <h2>{cards[5].header}</h2>
-            <p>{cards[5].text}</p>
+            <h2>Mint {cards[5].header}</h2>
+            
           </div>
         </div>
       </article>
@@ -177,15 +175,16 @@ export const Accordion = () => {
       >
 
         {redMinting && cards[6].header == "Red" ? <img src={cards[6].minting} /> : <img src={cards[6].image} />}
-
         <div className="content">
-          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[6].header)}>circles</span>
+          <span className="material-symbols-outlined" onClick={() => handleMinting(cards[6].header)}>bolt</span>
           <div>
-            <h2>{cards[6].header}</h2>
-            <p>{cards[6].text}</p>
+            <h2>Mint {cards[6].header}</h2>
+            
           </div>
         </div>
       </article>
+      <Link to="/profile">
+        <button className="profileButton">Dive into Profile</button></Link>
     </section>
   );
 };
