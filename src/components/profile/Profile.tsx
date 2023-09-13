@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as THREE from "three";
 import { random } from "lodash";
 import detectEthereumProvider from '@metamask/detect-provider';
