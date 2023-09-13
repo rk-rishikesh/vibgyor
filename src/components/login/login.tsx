@@ -7,10 +7,10 @@ export const Login = () => {
 
     let navigate = useNavigate();
 
-    let injectedProvider = false
+    // let injectedProvider = false
 
     if (typeof window.ethereum !== 'undefined') {
-        injectedProvider = true
+        // injectedProvider = true
         console.log(window.ethereum)
     }
 
@@ -37,6 +37,7 @@ export const Login = () => {
             method: "eth_requestAccounts",
         })
         updateWallet(accounts)
+        console.log(wallet)
         let path = `/mint`;
         navigate(path);
     }

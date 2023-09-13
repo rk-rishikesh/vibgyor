@@ -8,10 +8,10 @@ export const Mint = () => {
 
     let navigate = useNavigate();
 
-    let injectedProvider = false
+    // let injectedProvider = false
 
     if (typeof window.ethereum !== 'undefined') {
-        injectedProvider = true
+        // injectedProvider = true
         console.log(window.ethereum)
     }
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import "./editor.scss";
 import Row from "./Row";
 import { exportComponentAsPNG } from "react-component-export-image";

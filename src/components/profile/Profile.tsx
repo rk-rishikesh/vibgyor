@@ -108,12 +108,12 @@ export const Profile = () => {
 
 
   // WALLET CONNECTION
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
-  let injectedProvider = false
+  // let injectedProvider = false
 
   if (typeof window.ethereum !== 'undefined') {
-    injectedProvider = true
+    // injectedProvider = true
     console.log(window.ethereum)
   }
 
