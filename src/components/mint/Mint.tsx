@@ -74,8 +74,8 @@ export const Mint = () => {
             for (var i = 0; i < totalSupply; i++) {
                 const owner = await vibgyor.ownerOf(i);
                 console.log(owner.toString().toLowerCase())
-                console.log(wallet.accounts[0])
-                if (owner.toString().toLowerCase() == wallet.accounts[0]) {
+                console.log(accounts[0])
+                if (owner.toString().toLowerCase() == accounts[0]) {
                     tokenID = i;
                     console.log(i)
                 }
