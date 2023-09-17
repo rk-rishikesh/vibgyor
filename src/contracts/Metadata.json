@@ -1,0 +1,18 @@
+{
+    "name": "Violet Shade",
+    "description": "A regal hue that blends the calming tranquility of blue with the passionate energy of red, creating a color that embodies both sophistication and depth.",
+    "image": "ipfs://bafkreialejw4bzheza2kbgpaphrknhlrcidswu7zheydyk5sicvknsxmli",
+    "attributes": [
+        {
+            "trait_type": "Shade",
+            "value": "Violet"
+        },
+        {
+            "trait_type": "6551 Upgrade",
+            "value": "Enabled"
+        }
+    ],
+    "items": [
+        "6551 Upgrade"
+    ]
+}

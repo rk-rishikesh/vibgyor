@@ -1,11 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { cards } from "../../data";
+import detectEthereumProvider from '@metamask/detect-provider';
+import { ethers } from "ethers";
+import { TokenboundClient } from '@tokenbound/sdk'
+import {
+  VIBGYORADDRESS,
+  VIBGYORABI,
+} from "../../contracts/Vibgyor";
+
+import {
+  VIOLETADDRESS,
+  VIOLETABI,
+} from "../../contracts/Violet";
 import "./styles.css";
 
 export const Accordion = () => {
-  
+
   const [active, setActive] = useState(0);
+
+  const [violetBalance, setVioletBalance] = useState(0);
+  // const [indigoBalance, setIndigoBalance] = useState(0);
+  // const [blueBalance, setBlueBalance] = useState(0);
+  // const [greenBalance, setGreenBalance] = useState(0);
+  // const [yellowBalance, setYellowBalance] = useState(0);
+  // const [orangeBalance, setOrangeBalance] = useState(0);
+  // const [redBalance, setRedBalance] = useState(0);
 
   const [violetMinting, setVioletMinting] = useState(false);
   const [indigoMinting, setIndigoMinting] = useState(false);
@@ -15,17 +36,116 @@ export const Accordion = () => {
   const [orangeMinting, setOrangeMinting] = useState(false);
   const [redMinting, setRedMinting] = useState(false);
 
+  const [tba, setTBA] = useState("")
+
   const handleToggle = (index: number) => setActive(index);
 
-  // const handleMint = (colour:string) => {
-  //   handleMinting(colour);
-  //   handleMinted(colour);
-  // }
+  let navigate = useNavigate();
 
-  const handleMinting = (colour: string) => {
+  useEffect(() => {
+
+    const handleConnect = async () => {
+      const provider = await detectEthereumProvider({ silent: true })
+      console.log(provider)
+      const ethereum = await window.ethereum;
+
+      const signer = await new ethers.BrowserProvider(ethereum).getSigner();
+      console.log(signer)
+
+      let accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      })
+
+      const vibgyor = new ethers.Contract(
+        VIBGYORADDRESS,
+        VIBGYORABI,
+        signer
+      );
+
+      console.log(VIBGYORADDRESS)
+
+      const totalSupply = await vibgyor.totalSupply();
+
+      let tokenID = 0;
+      for (var i = 0; i < totalSupply; i++) {
+        const owner = await vibgyor.ownerOf(i);
+        if (owner.toString().toLowerCase() == accounts[0]) {
+          tokenID = i;
+          console.log(i)
+        }
+      }
+
+      console.log(tokenID)
+
+      const tokenboundClient = new TokenboundClient({ signer, chainId: 5 })
+
+      const account = await tokenboundClient.getAccount({
+        tokenContract: VIBGYORADDRESS,
+        tokenId: tokenID.toString(),
+      })
+
+      setTBA(account)
+
+      const isAccountDeployed = await tokenboundClient.checkAccountDeployment({
+        accountAddress: account,
+      })
+
+      // setIsDeployed(isAccountDeployed);
+      console.log("IS ACCOUNT DEPLOYED?", isAccountDeployed)
+
+
+      if (!isAccountDeployed) {
+        let path = `/mint`;
+        navigate(path);
+      }
+
+      const violet = new ethers.Contract(
+        VIOLETADDRESS,
+        VIOLETABI,
+        signer
+      );
+
+      console.log(account)
+      const vbalance = await violet.balanceOf(
+        account
+      );
+
+      console.log(vbalance)
+      setVioletBalance(vbalance)
+      if(vbalance > 0 ) {
+        setVioletMinting(true)
+      }
+    }
+    handleConnect()
+
+  }, [])
+
+  const handleMinting = async (colour: string) => {
+
+    const provider = await detectEthereumProvider({ silent: true })
+    console.log(provider)
+    const ethereum = await window.ethereum;
+
+    const signer = await new ethers.BrowserProvider(ethereum).getSigner();
+    console.log(signer)
 
     if (colour == "Violet") {
-      setVioletMinting(true);
+
+      const violet = new ethers.Contract(
+        VIOLETADDRESS,
+        VIOLETABI,
+        signer
+      );
+
+      console.log(tba)
+
+      if (violetBalance == 0) {
+        const mint = await violet.mintViolet(
+          tba
+        );
+        console.log(mint)
+      }
+
     } else if (colour == "Indigo") {
       setIndigoMinting(true)
     } else if (colour == "Blue") {
@@ -40,25 +160,6 @@ export const Accordion = () => {
       setRedMinting(true);
     }
   }
-
-  // const handleMinted = (colour: string) => {
-
-  //   if (colour == "Violet") {
-  //     setVioletMinting(false);
-  //   } else if (colour == "Indigo") {
-  //     setIndigoMinting(false)
-  //   } else if (colour == "Blue") {
-  //     setBlueMinting(false);
-  //   } else if (colour == "Green") {
-  //     setGreenMinting(false);
-  //   } else if (colour == "Yellow") {
-  //     setYellowMinting(false);
-  //   } else if (colour == "Orange") {
-  //     setOrangeMinting(false);
-  //   } else {
-  //     setRedMinting(false);
-  //   }
-  // }
 
   return (
     <section>
@@ -90,7 +191,7 @@ export const Accordion = () => {
           <span className="material-symbols-outlined" onClick={() => handleMinting(cards[1].header)}>bolt</span>
           <div>
             <h2>Mint {cards[1].header}</h2>
-           
+
           </div>
         </div>
       </article>
@@ -108,7 +209,7 @@ export const Accordion = () => {
           <span className="material-symbols-outlined" onClick={() => handleMinting(cards[2].header)}>bolt</span>
           <div>
             <h2>Mint {cards[2].header}</h2>
-          
+
           </div>
         </div>
       </article>
@@ -126,7 +227,7 @@ export const Accordion = () => {
           <span className="material-symbols-outlined" onClick={() => handleMinting(cards[3].header)}>bolt</span>
           <div>
             <h2>Mint {cards[3].header}</h2>
-           
+
           </div>
         </div>
       </article>
@@ -144,7 +245,7 @@ export const Accordion = () => {
           <span className="material-symbols-outlined" onClick={() => handleMinting(cards[4].header)}>bolt</span>
           <div>
             <h2>Mint {cards[4].header}</h2>
-            
+
           </div>
         </div>
       </article>
@@ -161,7 +262,7 @@ export const Accordion = () => {
           <span className="material-symbols-outlined" onClick={() => handleMinting(cards[5].header)}>bolt</span>
           <div>
             <h2>Mint {cards[5].header}</h2>
-            
+
           </div>
         </div>
       </article>
@@ -179,7 +280,7 @@ export const Accordion = () => {
           <span className="material-symbols-outlined" onClick={() => handleMinting(cards[6].header)}>bolt</span>
           <div>
             <h2>Mint {cards[6].header}</h2>
-            
+
           </div>
         </div>
       </article>

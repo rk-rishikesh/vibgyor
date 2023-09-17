@@ -1,4 +1,4 @@
-export const VIOLETADDRESS = "0x0648268510E0BfcbFB8420Cc25B421663f6FE7Cd";
+export const VIOLETADDRESS = "0x86c965C5869F1c9dA9cA5EFDEdA8244Ffc9733E3";
 
 export const VIOLETABI = [
 	{
@@ -213,7 +213,13 @@ export const VIOLETABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "recipient",
+				"type": "address"
+			}
+		],
 		"name": "mintViolet",
 		"outputs": [],
 		"stateMutability": "nonpayable",

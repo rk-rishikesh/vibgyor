@@ -2,6 +2,7 @@ import detectEthereumProvider from '@metamask/detect-provider';
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import "./login.css";
+import { ethers } from "ethers";
 
 export const Login = () => {
 
@@ -22,6 +23,10 @@ export const Login = () => {
         const getProvider = async () => {
             const provider = await detectEthereumProvider({ silent: true })
             console.log(provider)
+            const ethereum = await window.ethereum;
+
+            const signer = await new ethers.BrowserProvider(ethereum).getSigner();
+            console.log(signer)
             setHasProvider(Boolean(provider)) // transform provider to true or false
         }
 
