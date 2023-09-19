@@ -1,4 +1,4 @@
-export const REDADDRESS = "0xD981996CcC616910b425ae2A728D9ED456da8652";
+export const REDADDRESS = "0x91E7d9Bf08d5a36F86cf91C79DA38807C1624Eb0";
 
 export const REDABI = [
 	{
@@ -107,7 +107,13 @@ export const REDABI = [
 		"type": "event"
 	},
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "recipient",
+				"type": "address"
+			}
+		],
 		"name": "mintRed",
 		"outputs": [],
 		"stateMutability": "nonpayable",

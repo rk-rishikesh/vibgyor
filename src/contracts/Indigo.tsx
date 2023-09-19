@@ -1,6 +1,6 @@
-export const ORANGEADDRESS = "0x09Ee6907Cb1b656d71d3cf4bE7a73AffA92a3fBA";
+export const INDIGOADDRESS = "0x9Fae59e1dd6B1D491a1e2bf10c2C50f69c52D2b1";
 
-export const ORANGEABI = [
+export const INDIGOABI = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -213,8 +213,14 @@ export const ORANGEABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "mintOrange",
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "recipient",
+				"type": "address"
+			}
+		],
+		"name": "mintIndigo",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

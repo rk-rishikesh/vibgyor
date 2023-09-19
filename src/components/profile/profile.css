@@ -135,14 +135,14 @@ p {
   display: flex;
   flex-direction: row;
   gap: 14px;
-  margin-left: 18%;
+  margin-left: -2%;
 }
 
 .smbutton {
   display: grid;
   border: none;
   color: white;
-  padding: 15px 15px;
+  padding: 15px 18px;
   border-radius: 50%;
   text-align: center;
   top: 80%;
@@ -152,6 +152,20 @@ p {
   filter: grayscale(0.5);
 }
 
+.blankButton {
+  display: grid;
+  border: none;
+  padding: 15px 18px;
+  border-radius: 50%;
+color: #ffffff;
+  text-align: center;
+  top: 80%;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  background-color: black;
+  /* background-image: url("https://www.freeiconspng.com/thumbs/button-icon-png/green-button-icon-png-13.png"); */
+}
 .violet {
   box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
   background-color: rgb(107, 51, 240);

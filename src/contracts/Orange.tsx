@@ -1,6 +1,6 @@
-export const BLUEADDRESS = "0x4E5732CD2a7C4aA6880981C96E8b854810659fA3";
+export const ORANGEADDRESS = "0x101c2A03f02A26B0f9dfb2ad24DE7323ccA7FFf3";
 
-export const BLUEABI = [
+export const ORANGEABI = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -213,8 +213,14 @@ export const BLUEABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "mintBlue",
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "recipient",
+				"type": "address"
+			}
+		],
+		"name": "mintOrange",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

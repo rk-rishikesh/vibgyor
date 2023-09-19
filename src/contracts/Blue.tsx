@@ -1,6 +1,6 @@
-export const INDIGOADDRESS = "0x5269316805c8Da00e3Ca399215f6722E78Eb8319";
+export const BLUEADDRESS = "0x31EBF41ACcD2cD9FcE946250E3F5F364A65Da202";
 
-export const INDIGOABI = [
+export const BLUEABI = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -213,8 +213,14 @@ export const INDIGOABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "mintIndigo",
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "recipient",
+				"type": "address"
+			}
+		],
+		"name": "mintBlue",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

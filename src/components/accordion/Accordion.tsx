@@ -14,6 +14,37 @@ import {
   VIOLETADDRESS,
   VIOLETABI,
 } from "../../contracts/Violet";
+
+import {
+  INDIGOADDRESS,
+  INDIGOABI,
+} from "../../contracts/Indigo";
+
+import {
+  BLUEADDRESS,
+  BLUEABI,
+} from "../../contracts/Blue";
+
+import {
+  GREENADDRESS,
+  GREENABI,
+} from "../../contracts/Green";
+
+import {
+  YELLOWADDRESS,
+  YELLOWABI,
+} from "../../contracts/Yellow";
+
+import {
+  ORANGEADDRESS,
+  ORANGEABI,
+} from "../../contracts/Orange";
+
+import {
+  REDADDRESS,
+  REDABI,
+} from "../../contracts/Red";
+
 import "./styles.css";
 
 export const Accordion = () => {
@@ -21,12 +52,12 @@ export const Accordion = () => {
   const [active, setActive] = useState(0);
 
   const [violetBalance, setVioletBalance] = useState(0);
-  // const [indigoBalance, setIndigoBalance] = useState(0);
-  // const [blueBalance, setBlueBalance] = useState(0);
-  // const [greenBalance, setGreenBalance] = useState(0);
-  // const [yellowBalance, setYellowBalance] = useState(0);
-  // const [orangeBalance, setOrangeBalance] = useState(0);
-  // const [redBalance, setRedBalance] = useState(0);
+  const [indigoBalance, setIndigoBalance] = useState(0);
+  const [blueBalance, setBlueBalance] = useState(0);
+  const [greenBalance, setGreenBalance] = useState(0);
+  const [yellowBalance, setYellowBalance] = useState(0);
+  const [orangeBalance, setOrangeBalance] = useState(0);
+  const [redBalance, setRedBalance] = useState(0);
 
   const [violetMinting, setVioletMinting] = useState(false);
   const [indigoMinting, setIndigoMinting] = useState(false);
@@ -99,6 +130,7 @@ export const Accordion = () => {
         navigate(path);
       }
 
+      // VIOLET
       const violet = new ethers.Contract(
         VIOLETADDRESS,
         VIOLETABI,
@@ -114,6 +146,114 @@ export const Accordion = () => {
       setVioletBalance(vbalance)
       if(vbalance > 0 ) {
         setVioletMinting(true)
+      }
+
+      // INDIGO
+      const indigo = new ethers.Contract(
+        INDIGOADDRESS,
+        INDIGOABI,
+        signer
+      );
+
+      console.log(account)
+      const ibalance = await indigo.balanceOf(
+        account
+      );
+
+      console.log(ibalance)
+      setIndigoBalance(ibalance)
+      if(ibalance > 0 ) {
+        setIndigoMinting(true)
+      }
+
+      // BLUE
+      const blue = new ethers.Contract(
+        BLUEADDRESS,
+        BLUEABI,
+        signer
+      );
+
+      console.log(account)
+      const bbalance = await blue.balanceOf(
+        account
+      );
+
+      console.log(bbalance)
+      setBlueBalance(bbalance)
+      if(bbalance > 0 ) {
+        setBlueMinting(true)
+      }
+
+      // GREEN
+      const green = new ethers.Contract(
+        GREENADDRESS,
+        GREENABI,
+        signer
+      );
+
+      console.log(account)
+      const gbalance = await green.balanceOf(
+        account
+      );
+
+      console.log(gbalance)
+      setGreenBalance(gbalance)
+      if(gbalance > 0 ) {
+        setGreenMinting(true)
+      }
+
+      // YELLOW
+      const yellow = new ethers.Contract(
+        YELLOWADDRESS,
+        YELLOWABI,
+        signer
+      );
+
+      console.log(account)
+      const ybalance = await yellow.balanceOf(
+        account
+      );
+
+      console.log(ybalance)
+      setYellowBalance(ybalance)
+      if(ybalance > 0 ) {
+        setYellowMinting(true)
+      }
+
+      //ORANGE
+      const orange = new ethers.Contract(
+        ORANGEADDRESS,
+        ORANGEABI,
+        signer
+      );
+
+      console.log(account)
+      const obalance = await orange.balanceOf(
+        account
+      );
+
+      console.log(obalance)
+      setOrangeBalance(obalance)
+      if(obalance > 0 ) {
+        setOrangeMinting(true)
+      }
+
+      // RED
+      const red = new ethers.Contract(
+        REDADDRESS,
+        REDABI,
+        signer
+      );
+
+      console.log(account)
+      const rbalance = await red.balanceOf(
+        account
+      );
+
+      console.log(rbalance)
+      setRedBalance(rbalance)
+      if(rbalance > 0 ) {
+        setRedMinting(true)
       }
     }
     handleConnect()
@@ -147,17 +287,97 @@ export const Accordion = () => {
       }
 
     } else if (colour == "Indigo") {
-      setIndigoMinting(true)
+      const indigo = new ethers.Contract(
+        INDIGOADDRESS,
+        INDIGOABI,
+        signer
+      );
+
+      console.log(tba)
+
+      if (indigoBalance == 0) {
+        const mint = await indigo.mintIndigo(
+          tba
+        );
+        console.log(mint)
+      }
+      
     } else if (colour == "Blue") {
-      setBlueMinting(true);
+      const blue = new ethers.Contract(
+        BLUEADDRESS,
+        BLUEABI,
+        signer
+      );
+
+      console.log(tba)
+
+      if (blueBalance == 0) {
+        const mint = await blue.mintBlue(
+          tba
+        );
+        console.log(mint)
+      }
     } else if (colour == "Green") {
-      setGreenMinting(true);
+      const green = new ethers.Contract(
+        GREENADDRESS,
+        GREENABI,
+        signer
+      );
+
+      console.log(tba)
+
+      if (greenBalance == 0) {
+        const mint = await green.mintGreen(
+          tba
+        );
+        console.log(mint)
+      }
+
     } else if (colour == "Yellow") {
-      setYellowMinting(true);
+      const yellow = new ethers.Contract(
+        YELLOWADDRESS,
+        YELLOWABI,
+        signer
+      );
+
+      console.log(tba)
+
+      if (yellowBalance == 0) {
+        const mint = await yellow.mintYellow(
+          tba
+        );
+        console.log(mint)
+      }
     } else if (colour == "Orange") {
-      setOrangeMinting(true);
+      const orange = new ethers.Contract(
+        ORANGEADDRESS,
+        ORANGEABI,
+        signer
+      );
+
+      console.log(tba)
+
+      if (orangeBalance == 0) {
+        const mint = await orange.mintOrange(
+          tba
+        );
+        console.log(mint)
+      }
     } else {
-      setRedMinting(true);
+      const red = new ethers.Contract(
+        REDADDRESS,
+        REDABI,
+        signer
+      );
+
+      console.log(tba)
+
+      if (redBalance == 0) {
+        const mint = await red.mintRed(
+          tba
+        );
+        console.log(mint)
+      }
     }
   }
 
