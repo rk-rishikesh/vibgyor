@@ -29,7 +29,7 @@ export const Mint = () => {
 
     const initialState = { accounts: [] }
     const [wallet, setWallet] = useState(initialState)
-    // const [balance, setBalance] = useState(0)
+    const [minted, setMinted] = useState("MINT VIBGYOR")
     const [live, setIsDeployed] = useState(false)
     const [tba, setTBA] = useState("")
 
@@ -82,24 +82,29 @@ export const Mint = () => {
             }
     
             console.log(tokenID)
+
+            if(tokenID > 0) {
+                setMinted("CREATE TBA")
+            }    
+            if(tokenID !=0 ) {
+                const tokenboundClient = new TokenboundClient({ signer, chainId: 5 })
     
-            const tokenboundClient = new TokenboundClient({ signer, chainId: 5 })
-    
-            const account = await tokenboundClient.getAccount({
-                tokenContract: VIBGYORADDRESS,
-                tokenId: tokenID.toString(),
-            })
-    
-            console.log(tokenID.toString())
-            console.log(account)
-            setTBA(account)
-    
-            const isAccountDeployed = await tokenboundClient.checkAccountDeployment({
-                accountAddress: account,
-            })
-    
-            setIsDeployed(isAccountDeployed);
-            console.log("IS ACCOUNT DEPLOYED?", isAccountDeployed)
+                const account = await tokenboundClient.getAccount({
+                    tokenContract: VIBGYORADDRESS,
+                    tokenId: tokenID.toString(),
+                })
+        
+                console.log(tokenID.toString())
+                console.log(account)
+                setTBA(account)
+        
+                const isAccountDeployed = await tokenboundClient.checkAccountDeployment({
+                    accountAddress: account,
+                })
+        
+                setIsDeployed(isAccountDeployed);
+                console.log("IS ACCOUNT DEPLOYED?", isAccountDeployed)
+            }
 
         }
         handleConnect()
@@ -253,7 +258,7 @@ export const Mint = () => {
                     </div>
                 </div>
                 <div>
-                    <button onClick={handleClick}>{live ? "ENTER VIBGYOR" : "MINT VIBGYOR"}</button>
+                    <button onClick={handleClick}>{live ? "ENTER VIBGYOR" : minted}</button>
                 </div>
                 <img src="https://media.tenor.com/iyDS2fJlO7wAAAAC/rainbow-cute.gif" />
             </div>

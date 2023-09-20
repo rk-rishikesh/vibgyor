@@ -53,7 +53,7 @@ export const Login = () => {
                 <div>
                     {hasProvider ?
                         <button onClick={handleConnect}>LOGIN</button> :
-                        <button >INSTALL METAMASK</button>
+                        <button >CONNECT METAMASK</button>
                     }
                 </div>
                 <img src="https://media.tenor.com/iyDS2fJlO7wAAAAC/rainbow-cute.gif" />
